@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbClinica" Class="DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-R30TL5S;Initial Catalog=dbClinica;User ID=uClinica" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dbClinicaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbCategoria" Member="tbCategoria">
+    <Type Name="tbCategoria">
+      <Column Name="codCategoria" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="categoria" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="tbCategoria_tbProducto" Member="tbProducto" ThisKey="codCategoria" OtherKey="codProducto" Type="tbProducto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbUsuario" Member="tbUsuario">
+    <Type Name="tbUsuario">
+      <Column Name="codPersona" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="contraseña" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbDetalleEntrada" Member="tbDetalleEntrada">
+    <Type Name="tbDetalleEntrada">
+      <Column Name="codEntrada" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codProducto" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbDetalleSalida" Member="tbDetalleSalida">
+    <Type Name="tbDetalleSalida">
+      <Column Name="codSalida" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codProducto" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbEntrada" Member="tbEntrada">
+    <Type Name="tbEntrada">
+      <Column Name="codEntrada" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fechaEntrada" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPersona" Member="tbPersona">
+    <Type Name="tbPersona">
+      <Column Name="codPersona" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="codTipoPersona" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="dpi" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
+      <Column Name="fechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPresentacion" Member="tbPresentacion">
+    <Type Name="tbPresentacion">
+      <Column Name="codPresentacion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="presentacion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="tbPresentacion_tbProducto" Member="tbProducto" ThisKey="codPresentacion" OtherKey="codPresentacion" Type="tbProducto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbProducto" Member="tbProducto">
+    <Type Name="tbProducto">
+      <Column Name="codProducto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="codCategoria" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="codPresentacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="codTipoVenta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="producto" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Association Name="tbCategoria_tbProducto" Member="tbCategoria" ThisKey="codProducto" OtherKey="codCategoria" Type="tbCategoria" IsForeignKey="true" />
+      <Association Name="tbPresentacion_tbProducto" Member="tbPresentacion" ThisKey="codPresentacion" OtherKey="codPresentacion" Type="tbPresentacion" IsForeignKey="true" />
+      <Association Name="tbTipoVenta_tbProducto" Member="tbTipoVenta" ThisKey="codTipoVenta" OtherKey="codTipoVenta" Type="tbTipoVenta" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbSalida" Member="tbSalida">
+    <Type Name="tbSalida">
+      <Column Name="codSalida" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="codTipoSalida" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fechaSalida" Type="System.DateTime" DbType="DateTime2 NOT NULL" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTipoPersona" Member="tbTipoPersona">
+    <Type Name="tbTipoPersona">
+      <Column Name="codTipoPersona" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tipoPersona" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTipoSalida" Member="tbTipoSalida">
+    <Type Name="tbTipoSalida">
+      <Column Name="codTipoSalida" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tipoSalida" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTipoVenta" Member="tbTipoVenta">
+    <Type Name="tbTipoVenta">
+      <Column Name="codTipoVenta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tipoVenta" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="tbTipoVenta_tbProducto" Member="tbProducto" ThisKey="codTipoVenta" OtherKey="codTipoVenta" Type="tbProducto" />
+    </Type>
+  </Table>
+</Database>
