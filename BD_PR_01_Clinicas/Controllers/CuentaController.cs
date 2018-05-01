@@ -20,12 +20,12 @@ namespace BD_PR_01_Clinicas.Controllers
         public ActionResult IniciarSesion(FormCollection collection)
         {
             tbUsuario user = (from t in db.tbUsuario
-                              where t.usuario == collection["usuario"] && t.contraseña == collection["contraseña"]
+                              where t.usuario == collection["usuario"] && t.password == collection["password"]
                               select t).SingleOrDefault();
             if (user != null)
             {
                 Session["usuario"] = collection["usuario"];
-                Session["contraseña"] = collection["contraseña"];
+                Session["password"] = collection["password"];
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -38,7 +38,7 @@ namespace BD_PR_01_Clinicas.Controllers
         public ActionResult CerrarSesion()
         {
             Session["usuario"] = null;
-            Session["contraseña"] = null;
+            Session["password"] = null;
             return RedirectToAction("IniciarSesion", "Cuenta");
         }
     }

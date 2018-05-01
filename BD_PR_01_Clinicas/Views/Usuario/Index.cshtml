@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BD_PR_01_Clinicas.Models.tbUsuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateEstudiante")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Nombre")
+        </th>
+        <th>
+            @Html.DisplayName("Usuario")
+        </th>
+        <th>
+            @Html.DisplayName("Contraseña")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.codUsuario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.codUsuario }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.codUsuario })
+        </td>
+    </tr>
+}
+
+</table>

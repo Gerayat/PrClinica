@@ -33,9 +33,6 @@ namespace BD_PR_01_Clinicas.Models
     partial void InserttbCategoria(tbCategoria instance);
     partial void UpdatetbCategoria(tbCategoria instance);
     partial void DeletetbCategoria(tbCategoria instance);
-    partial void InserttbUsuario(tbUsuario instance);
-    partial void UpdatetbUsuario(tbUsuario instance);
-    partial void DeletetbUsuario(tbUsuario instance);
     partial void InserttbDetalleEntrada(tbDetalleEntrada instance);
     partial void UpdatetbDetalleEntrada(tbDetalleEntrada instance);
     partial void DeletetbDetalleEntrada(tbDetalleEntrada instance);
@@ -45,9 +42,6 @@ namespace BD_PR_01_Clinicas.Models
     partial void InserttbEntrada(tbEntrada instance);
     partial void UpdatetbEntrada(tbEntrada instance);
     partial void DeletetbEntrada(tbEntrada instance);
-    partial void InserttbPersona(tbPersona instance);
-    partial void UpdatetbPersona(tbPersona instance);
-    partial void DeletetbPersona(tbPersona instance);
     partial void InserttbPresentacion(tbPresentacion instance);
     partial void UpdatetbPresentacion(tbPresentacion instance);
     partial void DeletetbPresentacion(tbPresentacion instance);
@@ -57,15 +51,18 @@ namespace BD_PR_01_Clinicas.Models
     partial void InserttbSalida(tbSalida instance);
     partial void UpdatetbSalida(tbSalida instance);
     partial void DeletetbSalida(tbSalida instance);
-    partial void InserttbTipoPersona(tbTipoPersona instance);
-    partial void UpdatetbTipoPersona(tbTipoPersona instance);
-    partial void DeletetbTipoPersona(tbTipoPersona instance);
-    partial void InserttbTipoSalida(tbTipoSalida instance);
-    partial void UpdatetbTipoSalida(tbTipoSalida instance);
-    partial void DeletetbTipoSalida(tbTipoSalida instance);
     partial void InserttbTipoVenta(tbTipoVenta instance);
     partial void UpdatetbTipoVenta(tbTipoVenta instance);
     partial void DeletetbTipoVenta(tbTipoVenta instance);
+    partial void InserttbUsuario(tbUsuario instance);
+    partial void UpdatetbUsuario(tbUsuario instance);
+    partial void DeletetbUsuario(tbUsuario instance);
+    partial void InserttbRotacion(tbRotacion instance);
+    partial void UpdatetbRotacion(tbRotacion instance);
+    partial void DeletetbRotacion(tbRotacion instance);
+    partial void InserttbRotacionUsuario(tbRotacionUsuario instance);
+    partial void UpdatetbRotacionUsuario(tbRotacionUsuario instance);
+    partial void DeletetbRotacionUsuario(tbRotacionUsuario instance);
     #endregion
 		
 		public DataContext() : 
@@ -106,14 +103,6 @@ namespace BD_PR_01_Clinicas.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<tbUsuario> tbUsuario
-		{
-			get
-			{
-				return this.GetTable<tbUsuario>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tbDetalleEntrada> tbDetalleEntrada
 		{
 			get
@@ -135,14 +124,6 @@ namespace BD_PR_01_Clinicas.Models
 			get
 			{
 				return this.GetTable<tbEntrada>();
-			}
-		}
-		
-		public System.Data.Linq.Table<tbPersona> tbPersona
-		{
-			get
-			{
-				return this.GetTable<tbPersona>();
 			}
 		}
 		
@@ -170,27 +151,35 @@ namespace BD_PR_01_Clinicas.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<tbTipoPersona> tbTipoPersona
-		{
-			get
-			{
-				return this.GetTable<tbTipoPersona>();
-			}
-		}
-		
-		public System.Data.Linq.Table<tbTipoSalida> tbTipoSalida
-		{
-			get
-			{
-				return this.GetTable<tbTipoSalida>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tbTipoVenta> tbTipoVenta
 		{
 			get
 			{
 				return this.GetTable<tbTipoVenta>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbUsuario> tbUsuario
+		{
+			get
+			{
+				return this.GetTable<tbUsuario>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbRotacion> tbRotacion
+		{
+			get
+			{
+				return this.GetTable<tbRotacion>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbRotacionUsuario> tbRotacionUsuario
+		{
+			get
+			{
+				return this.GetTable<tbRotacionUsuario>();
 			}
 		}
 	}
@@ -263,7 +252,7 @@ namespace BD_PR_01_Clinicas.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbCategoria_tbProducto", Storage="_tbProducto", ThisKey="codCategoria", OtherKey="codProducto")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbCategoria_tbProducto", Storage="_tbProducto", ThisKey="codCategoria", OtherKey="codCategoria")]
 		public EntitySet<tbProducto> tbProducto
 		{
 			get
@@ -306,116 +295,6 @@ namespace BD_PR_01_Clinicas.Models
 		{
 			this.SendPropertyChanging();
 			entity.tbCategoria = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbUsuario")]
-	public partial class tbUsuario : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _codPersona;
-		
-		private string _usuario;
-		
-		private string _contraseña;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OncodPersonaChanging(int value);
-    partial void OncodPersonaChanged();
-    partial void OnusuarioChanging(string value);
-    partial void OnusuarioChanged();
-    partial void OncontraseñaChanging(string value);
-    partial void OncontraseñaChanged();
-    #endregion
-		
-		public tbUsuario()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codPersona", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int codPersona
-		{
-			get
-			{
-				return this._codPersona;
-			}
-			set
-			{
-				if ((this._codPersona != value))
-				{
-					this.OncodPersonaChanging(value);
-					this.SendPropertyChanging();
-					this._codPersona = value;
-					this.SendPropertyChanged("codPersona");
-					this.OncodPersonaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usuario", DbType="VarChar(50)")]
-		public string usuario
-		{
-			get
-			{
-				return this._usuario;
-			}
-			set
-			{
-				if ((this._usuario != value))
-				{
-					this.OnusuarioChanging(value);
-					this.SendPropertyChanging();
-					this._usuario = value;
-					this.SendPropertyChanged("usuario");
-					this.OnusuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contraseña", DbType="VarChar(50)")]
-		public string contraseña
-		{
-			get
-			{
-				return this._contraseña;
-			}
-			set
-			{
-				if ((this._contraseña != value))
-				{
-					this.OncontraseñaChanging(value);
-					this.SendPropertyChanging();
-					this._contraseña = value;
-					this.SendPropertyChanged("contraseña");
-					this.OncontraseñaChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -725,164 +604,6 @@ namespace BD_PR_01_Clinicas.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbPersona")]
-	public partial class tbPersona : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _codPersona;
-		
-		private System.Nullable<int> _codTipoPersona;
-		
-		private string _nombre;
-		
-		private string _dpi;
-		
-		private System.Nullable<System.DateTime> _fechaNacimiento;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OncodPersonaChanging(int value);
-    partial void OncodPersonaChanged();
-    partial void OncodTipoPersonaChanging(System.Nullable<int> value);
-    partial void OncodTipoPersonaChanged();
-    partial void OnnombreChanging(string value);
-    partial void OnnombreChanged();
-    partial void OndpiChanging(string value);
-    partial void OndpiChanged();
-    partial void OnfechaNacimientoChanging(System.Nullable<System.DateTime> value);
-    partial void OnfechaNacimientoChanged();
-    #endregion
-		
-		public tbPersona()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codPersona", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int codPersona
-		{
-			get
-			{
-				return this._codPersona;
-			}
-			set
-			{
-				if ((this._codPersona != value))
-				{
-					this.OncodPersonaChanging(value);
-					this.SendPropertyChanging();
-					this._codPersona = value;
-					this.SendPropertyChanged("codPersona");
-					this.OncodPersonaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codTipoPersona", DbType="Int")]
-		public System.Nullable<int> codTipoPersona
-		{
-			get
-			{
-				return this._codTipoPersona;
-			}
-			set
-			{
-				if ((this._codTipoPersona != value))
-				{
-					this.OncodTipoPersonaChanging(value);
-					this.SendPropertyChanging();
-					this._codTipoPersona = value;
-					this.SendPropertyChanged("codTipoPersona");
-					this.OncodTipoPersonaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100)")]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this.OnnombreChanging(value);
-					this.SendPropertyChanging();
-					this._nombre = value;
-					this.SendPropertyChanged("nombre");
-					this.OnnombreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dpi", DbType="VarChar(14)")]
-		public string dpi
-		{
-			get
-			{
-				return this._dpi;
-			}
-			set
-			{
-				if ((this._dpi != value))
-				{
-					this.OndpiChanging(value);
-					this.SendPropertyChanging();
-					this._dpi = value;
-					this.SendPropertyChanged("dpi");
-					this.OndpiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaNacimiento", DbType="Date")]
-		public System.Nullable<System.DateTime> fechaNacimiento
-		{
-			get
-			{
-				return this._fechaNacimiento;
-			}
-			set
-			{
-				if ((this._fechaNacimiento != value))
-				{
-					this.OnfechaNacimientoChanging(value);
-					this.SendPropertyChanging();
-					this._fechaNacimiento = value;
-					this.SendPropertyChanged("fechaNacimiento");
-					this.OnfechaNacimientoChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbPresentacion")]
 	public partial class tbPresentacion : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1058,10 +779,6 @@ namespace BD_PR_01_Clinicas.Models
 			{
 				if ((this._codProducto != value))
 				{
-					if (this._tbCategoria.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OncodProductoChanging(value);
 					this.SendPropertyChanging();
 					this._codProducto = value;
@@ -1082,6 +799,10 @@ namespace BD_PR_01_Clinicas.Models
 			{
 				if ((this._codCategoria != value))
 				{
+					if (this._tbCategoria.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OncodCategoriaChanging(value);
 					this.SendPropertyChanging();
 					this._codCategoria = value;
@@ -1179,7 +900,7 @@ namespace BD_PR_01_Clinicas.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbCategoria_tbProducto", Storage="_tbCategoria", ThisKey="codProducto", OtherKey="codCategoria", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbCategoria_tbProducto", Storage="_tbCategoria", ThisKey="codCategoria", OtherKey="codCategoria", IsForeignKey=true)]
 		public tbCategoria tbCategoria
 		{
 			get
@@ -1202,11 +923,11 @@ namespace BD_PR_01_Clinicas.Models
 					if ((value != null))
 					{
 						value.tbProducto.Add(this);
-						this._codProducto = value.codCategoria;
+						this._codCategoria = value.codCategoria;
 					}
 					else
 					{
-						this._codProducto = default(int);
+						this._codCategoria = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("tbCategoria");
 				}
@@ -1310,8 +1031,6 @@ namespace BD_PR_01_Clinicas.Models
 		
 		private int _codSalida;
 		
-		private System.Nullable<int> _codTipoSalida;
-		
 		private System.DateTime _fechaSalida;
 		
     #region Definiciones de métodos de extensibilidad
@@ -1320,8 +1039,6 @@ namespace BD_PR_01_Clinicas.Models
     partial void OnCreated();
     partial void OncodSalidaChanging(int value);
     partial void OncodSalidaChanged();
-    partial void OncodTipoSalidaChanging(System.Nullable<int> value);
-    partial void OncodTipoSalidaChanged();
     partial void OnfechaSalidaChanging(System.DateTime value);
     partial void OnfechaSalidaChanged();
     #endregion
@@ -1351,26 +1068,6 @@ namespace BD_PR_01_Clinicas.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codTipoSalida", DbType="Int")]
-		public System.Nullable<int> codTipoSalida
-		{
-			get
-			{
-				return this._codTipoSalida;
-			}
-			set
-			{
-				if ((this._codTipoSalida != value))
-				{
-					this.OncodTipoSalidaChanging(value);
-					this.SendPropertyChanging();
-					this._codTipoSalida = value;
-					this.SendPropertyChanged("codTipoSalida");
-					this.OncodTipoSalidaChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaSalida", AutoSync=AutoSync.Always, DbType="DateTime2 NOT NULL", IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
 		public System.DateTime fechaSalida
 		{
@@ -1387,178 +1084,6 @@ namespace BD_PR_01_Clinicas.Models
 					this._fechaSalida = value;
 					this.SendPropertyChanged("fechaSalida");
 					this.OnfechaSalidaChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbTipoPersona")]
-	public partial class tbTipoPersona : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _codTipoPersona;
-		
-		private string _tipoPersona;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OncodTipoPersonaChanging(int value);
-    partial void OncodTipoPersonaChanged();
-    partial void OntipoPersonaChanging(string value);
-    partial void OntipoPersonaChanged();
-    #endregion
-		
-		public tbTipoPersona()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codTipoPersona", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int codTipoPersona
-		{
-			get
-			{
-				return this._codTipoPersona;
-			}
-			set
-			{
-				if ((this._codTipoPersona != value))
-				{
-					this.OncodTipoPersonaChanging(value);
-					this.SendPropertyChanging();
-					this._codTipoPersona = value;
-					this.SendPropertyChanged("codTipoPersona");
-					this.OncodTipoPersonaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipoPersona", DbType="VarChar(50)")]
-		public string tipoPersona
-		{
-			get
-			{
-				return this._tipoPersona;
-			}
-			set
-			{
-				if ((this._tipoPersona != value))
-				{
-					this.OntipoPersonaChanging(value);
-					this.SendPropertyChanging();
-					this._tipoPersona = value;
-					this.SendPropertyChanged("tipoPersona");
-					this.OntipoPersonaChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbTipoSalida")]
-	public partial class tbTipoSalida : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _codTipoSalida;
-		
-		private string _tipoSalida;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OncodTipoSalidaChanging(int value);
-    partial void OncodTipoSalidaChanged();
-    partial void OntipoSalidaChanging(string value);
-    partial void OntipoSalidaChanged();
-    #endregion
-		
-		public tbTipoSalida()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codTipoSalida", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int codTipoSalida
-		{
-			get
-			{
-				return this._codTipoSalida;
-			}
-			set
-			{
-				if ((this._codTipoSalida != value))
-				{
-					this.OncodTipoSalidaChanging(value);
-					this.SendPropertyChanging();
-					this._codTipoSalida = value;
-					this.SendPropertyChanged("codTipoSalida");
-					this.OncodTipoSalidaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipoSalida", DbType="VarChar(50)")]
-		public string tipoSalida
-		{
-			get
-			{
-				return this._tipoSalida;
-			}
-			set
-			{
-				if ((this._tipoSalida != value))
-				{
-					this.OntipoSalidaChanging(value);
-					this.SendPropertyChanging();
-					this._tipoSalida = value;
-					this.SendPropertyChanged("tipoSalida");
-					this.OntipoSalidaChanged();
 				}
 			}
 		}
@@ -1695,6 +1220,594 @@ namespace BD_PR_01_Clinicas.Models
 		{
 			this.SendPropertyChanging();
 			entity.tbTipoVenta = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbUsuario")]
+	public partial class tbUsuario : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _codUsuario;
+		
+		private System.Nullable<byte> _tipoUsuario;
+		
+		private string _nombre;
+		
+		private string _dpi;
+		
+		private string _carnet;
+		
+		private System.Nullable<System.DateTime> _fechaNacimiento;
+		
+		private string _usuario;
+		
+		private string _password;
+		
+		private EntitySet<tbRotacionUsuario> _tbRotacionUsuario;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OncodUsuarioChanging(int value);
+    partial void OncodUsuarioChanged();
+    partial void OntipoUsuarioChanging(System.Nullable<byte> value);
+    partial void OntipoUsuarioChanged();
+    partial void OnnombreChanging(string value);
+    partial void OnnombreChanged();
+    partial void OndpiChanging(string value);
+    partial void OndpiChanged();
+    partial void OncarnetChanging(string value);
+    partial void OncarnetChanged();
+    partial void OnfechaNacimientoChanging(System.Nullable<System.DateTime> value);
+    partial void OnfechaNacimientoChanged();
+    partial void OnusuarioChanging(string value);
+    partial void OnusuarioChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
+    #endregion
+		
+		public tbUsuario()
+		{
+			this._tbRotacionUsuario = new EntitySet<tbRotacionUsuario>(new Action<tbRotacionUsuario>(this.attach_tbRotacionUsuario), new Action<tbRotacionUsuario>(this.detach_tbRotacionUsuario));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codUsuario", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int codUsuario
+		{
+			get
+			{
+				return this._codUsuario;
+			}
+			set
+			{
+				if ((this._codUsuario != value))
+				{
+					this.OncodUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._codUsuario = value;
+					this.SendPropertyChanged("codUsuario");
+					this.OncodUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipoUsuario", DbType="TinyInt")]
+		public System.Nullable<byte> tipoUsuario
+		{
+			get
+			{
+				return this._tipoUsuario;
+			}
+			set
+			{
+				if ((this._tipoUsuario != value))
+				{
+					this.OntipoUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._tipoUsuario = value;
+					this.SendPropertyChanged("tipoUsuario");
+					this.OntipoUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100)")]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this.OnnombreChanging(value);
+					this.SendPropertyChanging();
+					this._nombre = value;
+					this.SendPropertyChanged("nombre");
+					this.OnnombreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dpi", DbType="VarChar(14)")]
+		public string dpi
+		{
+			get
+			{
+				return this._dpi;
+			}
+			set
+			{
+				if ((this._dpi != value))
+				{
+					this.OndpiChanging(value);
+					this.SendPropertyChanging();
+					this._dpi = value;
+					this.SendPropertyChanged("dpi");
+					this.OndpiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_carnet", DbType="VarChar(13)")]
+		public string carnet
+		{
+			get
+			{
+				return this._carnet;
+			}
+			set
+			{
+				if ((this._carnet != value))
+				{
+					this.OncarnetChanging(value);
+					this.SendPropertyChanging();
+					this._carnet = value;
+					this.SendPropertyChanged("carnet");
+					this.OncarnetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaNacimiento", DbType="Date")]
+		public System.Nullable<System.DateTime> fechaNacimiento
+		{
+			get
+			{
+				return this._fechaNacimiento;
+			}
+			set
+			{
+				if ((this._fechaNacimiento != value))
+				{
+					this.OnfechaNacimientoChanging(value);
+					this.SendPropertyChanging();
+					this._fechaNacimiento = value;
+					this.SendPropertyChanged("fechaNacimiento");
+					this.OnfechaNacimientoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usuario", DbType="VarChar(30)")]
+		public string usuario
+		{
+			get
+			{
+				return this._usuario;
+			}
+			set
+			{
+				if ((this._usuario != value))
+				{
+					this.OnusuarioChanging(value);
+					this.SendPropertyChanging();
+					this._usuario = value;
+					this.SendPropertyChanged("usuario");
+					this.OnusuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(30)")]
+		public string password
+		{
+			get
+			{
+				return this._password;
+			}
+			set
+			{
+				if ((this._password != value))
+				{
+					this.OnpasswordChanging(value);
+					this.SendPropertyChanging();
+					this._password = value;
+					this.SendPropertyChanged("password");
+					this.OnpasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbUsuario_tbRotacionUsuario", Storage="_tbRotacionUsuario", ThisKey="codUsuario", OtherKey="codUsuario")]
+		public EntitySet<tbRotacionUsuario> tbRotacionUsuario
+		{
+			get
+			{
+				return this._tbRotacionUsuario;
+			}
+			set
+			{
+				this._tbRotacionUsuario.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tbRotacionUsuario(tbRotacionUsuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbUsuario = this;
+		}
+		
+		private void detach_tbRotacionUsuario(tbRotacionUsuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbUsuario = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbRotacion")]
+	public partial class tbRotacion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _codRotacion;
+		
+		private System.Nullable<System.DateTime> _fechaInicio;
+		
+		private System.Nullable<System.DateTime> _fechaFinal;
+		
+		private EntitySet<tbRotacionUsuario> _tbRotacionUsuario;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OncodRotacionChanging(int value);
+    partial void OncodRotacionChanged();
+    partial void OnfechaInicioChanging(System.Nullable<System.DateTime> value);
+    partial void OnfechaInicioChanged();
+    partial void OnfechaFinalChanging(System.Nullable<System.DateTime> value);
+    partial void OnfechaFinalChanged();
+    #endregion
+		
+		public tbRotacion()
+		{
+			this._tbRotacionUsuario = new EntitySet<tbRotacionUsuario>(new Action<tbRotacionUsuario>(this.attach_tbRotacionUsuario), new Action<tbRotacionUsuario>(this.detach_tbRotacionUsuario));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codRotacion", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int codRotacion
+		{
+			get
+			{
+				return this._codRotacion;
+			}
+			set
+			{
+				if ((this._codRotacion != value))
+				{
+					this.OncodRotacionChanging(value);
+					this.SendPropertyChanging();
+					this._codRotacion = value;
+					this.SendPropertyChanged("codRotacion");
+					this.OncodRotacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaInicio", DbType="Date")]
+		public System.Nullable<System.DateTime> fechaInicio
+		{
+			get
+			{
+				return this._fechaInicio;
+			}
+			set
+			{
+				if ((this._fechaInicio != value))
+				{
+					this.OnfechaInicioChanging(value);
+					this.SendPropertyChanging();
+					this._fechaInicio = value;
+					this.SendPropertyChanged("fechaInicio");
+					this.OnfechaInicioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaFinal", DbType="Date")]
+		public System.Nullable<System.DateTime> fechaFinal
+		{
+			get
+			{
+				return this._fechaFinal;
+			}
+			set
+			{
+				if ((this._fechaFinal != value))
+				{
+					this.OnfechaFinalChanging(value);
+					this.SendPropertyChanging();
+					this._fechaFinal = value;
+					this.SendPropertyChanged("fechaFinal");
+					this.OnfechaFinalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbRotacion_tbRotacionUsuario", Storage="_tbRotacionUsuario", ThisKey="codRotacion", OtherKey="codRotacion")]
+		public EntitySet<tbRotacionUsuario> tbRotacionUsuario
+		{
+			get
+			{
+				return this._tbRotacionUsuario;
+			}
+			set
+			{
+				this._tbRotacionUsuario.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tbRotacionUsuario(tbRotacionUsuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbRotacion = this;
+		}
+		
+		private void detach_tbRotacionUsuario(tbRotacionUsuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbRotacion = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbRotacionUsuario")]
+	public partial class tbRotacionUsuario : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _codRotacion;
+		
+		private int _codUsuario;
+		
+		private System.Nullable<bool> _estado;
+		
+		private EntityRef<tbUsuario> _tbUsuario;
+		
+		private EntityRef<tbRotacion> _tbRotacion;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OncodRotacionChanging(int value);
+    partial void OncodRotacionChanged();
+    partial void OncodUsuarioChanging(int value);
+    partial void OncodUsuarioChanged();
+    partial void OnestadoChanging(System.Nullable<bool> value);
+    partial void OnestadoChanged();
+    #endregion
+		
+		public tbRotacionUsuario()
+		{
+			this._tbUsuario = default(EntityRef<tbUsuario>);
+			this._tbRotacion = default(EntityRef<tbRotacion>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codRotacion", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int codRotacion
+		{
+			get
+			{
+				return this._codRotacion;
+			}
+			set
+			{
+				if ((this._codRotacion != value))
+				{
+					if (this._tbRotacion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OncodRotacionChanging(value);
+					this.SendPropertyChanging();
+					this._codRotacion = value;
+					this.SendPropertyChanged("codRotacion");
+					this.OncodRotacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codUsuario", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int codUsuario
+		{
+			get
+			{
+				return this._codUsuario;
+			}
+			set
+			{
+				if ((this._codUsuario != value))
+				{
+					if (this._tbUsuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OncodUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._codUsuario = value;
+					this.SendPropertyChanged("codUsuario");
+					this.OncodUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="Bit")]
+		public System.Nullable<bool> estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this.OnestadoChanging(value);
+					this.SendPropertyChanging();
+					this._estado = value;
+					this.SendPropertyChanged("estado");
+					this.OnestadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbUsuario_tbRotacionUsuario", Storage="_tbUsuario", ThisKey="codUsuario", OtherKey="codUsuario", IsForeignKey=true)]
+		public tbUsuario tbUsuario
+		{
+			get
+			{
+				return this._tbUsuario.Entity;
+			}
+			set
+			{
+				tbUsuario previousValue = this._tbUsuario.Entity;
+				if (((previousValue != value) 
+							|| (this._tbUsuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbUsuario.Entity = null;
+						previousValue.tbRotacionUsuario.Remove(this);
+					}
+					this._tbUsuario.Entity = value;
+					if ((value != null))
+					{
+						value.tbRotacionUsuario.Add(this);
+						this._codUsuario = value.codUsuario;
+					}
+					else
+					{
+						this._codUsuario = default(int);
+					}
+					this.SendPropertyChanged("tbUsuario");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbRotacion_tbRotacionUsuario", Storage="_tbRotacion", ThisKey="codRotacion", OtherKey="codRotacion", IsForeignKey=true)]
+		public tbRotacion tbRotacion
+		{
+			get
+			{
+				return this._tbRotacion.Entity;
+			}
+			set
+			{
+				tbRotacion previousValue = this._tbRotacion.Entity;
+				if (((previousValue != value) 
+							|| (this._tbRotacion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbRotacion.Entity = null;
+						previousValue.tbRotacionUsuario.Remove(this);
+					}
+					this._tbRotacion.Entity = value;
+					if ((value != null))
+					{
+						value.tbRotacionUsuario.Add(this);
+						this._codRotacion = value.codRotacion;
+					}
+					else
+					{
+						this._codRotacion = default(int);
+					}
+					this.SendPropertyChanged("tbRotacion");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

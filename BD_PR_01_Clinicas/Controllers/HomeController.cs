@@ -17,7 +17,11 @@ namespace BD_PR_01_Clinicas.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+            return View();
+        }
 
+        public ActionResult Administracion()
+        {
             return View();
         }
     }

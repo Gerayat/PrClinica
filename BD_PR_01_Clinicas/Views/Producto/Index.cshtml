@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BD_PR_01_Clinicas.Models.tbProducto>
+
+@{
+    ViewBag.Title = "Medicamento";
+}
+
+<h2>Medicamentos</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Medicamento", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Producto")
+        </th>
+        <th>
+            @Html.DisplayName("Categoria")
+        </th>
+        <th>
+            @Html.DisplayName("Presentación")
+        </th>
+        <th>
+            @Html.DisplayName("Tipo Venta")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.producto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbCategoria.categoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbPresentacion.presentacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbTipoVenta.tipoVenta)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.codProducto }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.codProducto }) |
+            @Html.ActionLink("Deshabilitar", "Delete", new { id=item.codProducto })
+        </td>
+    </tr>
+}
+
+</table>

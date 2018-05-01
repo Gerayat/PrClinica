@@ -20,13 +20,15 @@
                 </button>
                 @Html.ActionLink("Clinica Familiar", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+
+                <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Administración", "Administracion", "Home")</li>
+                            <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                        </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
         </div>
     </div>
     <div class="container body-content">

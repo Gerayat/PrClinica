@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Administración";
+}
+
+<div class="jumbotron">
+    <h1>Administración</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2><p>@Html.ActionLink("Usuarios", "Index", "Usuario")</p></h2>
+        <p>Administracion de los usuarios del programa.</p>
+    </div>
+
+    <div class="col-md-4">
+        <h2><p>@Html.ActionLink("Presentaciones", "Index", "Presentacion")</p></h2>
+        <p>Administracion de las diferentes presentaciones aplicables a un producto.</p>
+    </div>
+
+    <div class="col-md-4">
+        <h2><p>@Html.ActionLink("Categorias", "Index", "Categoria")</p></h2>
+        <p>Administracion de las categorias aplicables a cada producto, tales como los analgesicos, antidiureicos, etc.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2><p>@Html.ActionLink("Medicamentos", "Index", "Producto")</p></h2>
+        <p>Administracion de los medicamentos existentes en inventario.</p>
+    </div>
+
+    <div class="col-md-4">
+        <h2><p>@Html.ActionLink("Rotaciones", "Index", "Rotacion")</p></h2>
+        <p>Administracion de las rotaciones y asignacion de estudiantes.</p>
+    </div>
+
+    @*<div class="col-md-4">
+        <h2><p>@Html.ActionLink("Categorias", "Index", "Categoria")</p></h2>
+        <p>Administracion de las categorias aplicables a cada producto, tales como los analgesicos, antidiureicos, etc.</p>
+    </div>*@
+</div>
